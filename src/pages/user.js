@@ -1,36 +1,37 @@
 import { useState } from 'react';
 import { connect } from 'react-redux';
-import { setCurrentName } from '../redux/user-action';
+import { setUser } from '../redux/user-action';
 import './user.css';
 
-const UserName = (props) => {
-	console.log('👍👍👍👍👍UserName');
+const User = (props) => {
+	console.log('👍👍👍👍👍User');
 
 	const [name, setName] = useState('');
+	const [value, setValue] = useState(0);
 
 	const handleNameChange = (event) => {
 		setName(event.target.value);
 	};
 
+	const handleValueChange = (event) => {
+		setValue(event.target.value);
+	};
+
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		props.dispatch(setCurrentName({ name: name }));
+		props.dispatch(setUser({ name, value }));
 	};
 
 	return (
 		<div className="box">
+			<h1>User</h1>
 			<form onSubmit={handleSubmit}>
 				<input type="text" value={name} onChange={handleNameChange} />
-				<button type="submit">CHANGE NAME</button>
+				<input type="text" value={value} onChange={handleValueChange} />
+				<button type="submit">SET USER</button>
 			</form>
 		</div>
 	);
 };
 
-const mapStateToProps = (state) => {
-	return {
-		user: state.user,
-	};
-};
-
-export default connect(mapStateToProps)(UserName);
+export default connect()(User);

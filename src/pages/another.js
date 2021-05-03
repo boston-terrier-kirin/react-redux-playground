@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { connect } from 'react-redux';
-import { setCurrentValue } from '../redux/user-action';
+import { setCurrentValue } from '../redux/another-action';
 import './user.css';
 
-const UserValue = (props) => {
-	console.log('👍👍👍👍👍UserValue');
+const AnotherValue = (props) => {
+	console.log('👍👍👍👍👍AnotherValue');
 
 	const [value, setValue] = useState(0);
 
@@ -14,11 +14,12 @@ const UserValue = (props) => {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		props.dispatch(setCurrentValue({ value: value }));
+		props.dispatch(setCurrentValue(value));
 	};
 
 	return (
 		<div className="box">
+			<h1>Another</h1>
 			<form onSubmit={handleSubmit}>
 				<input type="text" value={value} onChange={handleValueChange} />
 				<button type="submit">SET VALUE</button>
@@ -27,10 +28,4 @@ const UserValue = (props) => {
 	);
 };
 
-const mapStateToProps = (state) => {
-	return {
-		user: state.user,
-	};
-};
-
-export default connect(mapStateToProps)(UserValue);
+export default connect()(AnotherValue);

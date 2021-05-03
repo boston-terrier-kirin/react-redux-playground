@@ -1,13 +1,17 @@
-import UserName from './pages/user-name';
-import UserValue from './pages/user-value';
+import User from './pages/user';
 import UserPage from './pages/user-page';
+
+import Another from './pages/another';
+import AnotherPage from './pages/another-page';
 
 function App() {
 	return (
 		<div>
-			<UserName />
-			<UserValue />
+			<User />
 			<UserPage />
+			<hr />
+			<Another />
+			<AnotherPage />
 		</div>
 	);
 }
